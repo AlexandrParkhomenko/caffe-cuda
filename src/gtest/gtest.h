@@ -2669,7 +2669,7 @@ inline bool IsDir(const StatStruct& st) { return S_ISDIR(st.st_mode); }
 #endif
 
 inline const char* StrNCpy(char* dest, const char* src, size_t n) {
-  return strncpy(dest, src, n);
+  return (const char*) memcpy(dest, src, n); // not strncpy
 }
 
 // ChDir(), FReopen(), FDOpen(), Read(), Write(), Close(), and

@@ -1,3 +1,7 @@
+// The practice of declaring the Bind placeholders (_1, _2, ...) in the global namespace is deprecated. 
+// Please use <boost/bind/bind.hpp> + using namespace boost::placeholders, 
+// or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior.
+#define BOOST_BIND_GLOBAL_PLACEHOLDERS 1 
 #ifdef WITH_PYTHON_LAYER
 #include "boost/python.hpp"
 namespace bp = boost::python;
@@ -438,7 +442,7 @@ int main(int argc, char** argv) {
 #endif
       return GetBrewFunction(caffe::string(argv[1]))();
 #ifdef WITH_PYTHON_LAYER
-    } catch (bp::error_already_set) {
+    } catch (const bp::error_already_set&) {
       PyErr_Print();
       return 1;
     }

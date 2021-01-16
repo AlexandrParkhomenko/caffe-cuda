@@ -1,5 +1,10 @@
 // Make sure we include Python.h before any system header
 // to avoid _POSIX_C_SOURCE redefinition
+
+// The practice of declaring the Bind placeholders (_1, _2, ...) in the global namespace is deprecated. 
+// Please use <boost/bind/bind.hpp> + using namespace boost::placeholders, 
+// or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior.
+#define BOOST_BIND_GLOBAL_PLACEHOLDERS 1
 #ifdef WITH_PYTHON_LAYER
 #include <boost/python.hpp>
 #endif
@@ -295,7 +300,7 @@ shared_ptr<Layer<Dtype> > GetPythonLayer(const LayerParameter& param) {
     bp::object module = bp::import(param.python_param().module().c_str());
     bp::object layer = module.attr(param.python_param().layer().c_str())(param);
     return bp::extract<shared_ptr<PythonLayer<Dtype> > >(layer)();
-  } catch (bp::error_already_set) {
+  } catch (const bp::error_already_set&) {
     PyErr_Print();
     throw;
   }

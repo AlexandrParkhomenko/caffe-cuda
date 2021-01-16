@@ -3,6 +3,10 @@
 // Produce deprecation warnings (needs to come before arrayobject.h inclusion).
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 
+// The practice of declaring the Bind placeholders (_1, _2, ...) in the global namespace is deprecated. 
+// Please use <boost/bind/bind.hpp> + using namespace boost::placeholders, 
+// or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior.
+#define BOOST_BIND_GLOBAL_PLACEHOLDERS 1
 #include <boost/make_shared.hpp>
 #include <boost/python.hpp>
 #include <boost/python/raw_function.hpp>
