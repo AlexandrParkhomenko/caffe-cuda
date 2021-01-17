@@ -98,19 +98,21 @@ Note, this requires a `deb-src` entry in your `/etc/apt/sources.list`.
 
 #### Compiler Combinations
 
-Some users may find their favorate compiler doesn't work with CUDA.
+Some users may find their favorite compiler doesn't work with CUDA.
 
 ```
-CXX compiler |  CUDA 7.5  |  CUDA 8.0  |  CUDA 9.0  |
--------------+------------+------------+------------+
-GCC-8        |     ?      |     ?      |     ?      |
-GCC-7        |     ?      |     ?      |     ?      |
-GCC-6        |     ✘      |     ✘      |     ✔      |
-GCC-5        |     ✔ [1]  |     ✔      |     ✔      |
--------------+------------+------------+------------+
-CLANG-4.0    |     ?      |     ?      |     ?      |
-CLANG-3.9    |     ✘      |     ✘      |     ✔      |
-CLANG-3.8    |     ?      |     ✔      |     ✔      |
+CXX compiler |  CUDA 7.5  |  CUDA 8.0  |  CUDA 9.0  |  CUDA 10.0 |  CUDA 11.0 |
+-------------+------------+------------+------------+------------+------------+
+GCC-10       |     ?      |     ?      |     ?      |     ?      |     ✔      |
+GCC-9        |     ?      |     ?      |     ?      |     ?      |     ?      |
+GCC-8        |     ?      |     ?      |     ?      |     ?      |     ?      |
+GCC-7        |     ?      |     ?      |     ?      |     ?      |     ?      |
+GCC-6        |     ✘      |     ✘      |     ✔      |     ?      |     ?      |
+GCC-5        |     ✔ [1]  |     ✔      |     ✔      |     ?      |     ?      |
+-------------+------------+------------+------------+------------+------------+
+CLANG-4.0    |     ?      |     ?      |     ?      |     ?      |     ?      |
+CLANG-3.9    |     ✘      |     ✘      |     ✔      |     ?      |     ?      |
+CLANG-3.8    |     ?      |     ✔      |     ✔      |     ?      |     ?      |
 ```
 
 `[1]` CUDA 7.5 's `host_config.h` must be patched before working with GCC-5.
