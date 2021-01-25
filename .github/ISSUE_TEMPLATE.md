@@ -1,10 +1,6 @@
 ## Important - read before submitting
 
-*Please read the [guidelines for contributing](https://github.com/BVLC/caffe/blob/master/CONTRIBUTING.md) before submitting this issue!*
-
-*Please do not post installation, build, usage, or modeling questions, or other requests for help to Issues.*
-Use the [caffe-users list](https://groups.google.com/forum/#!forum/caffe-users) instead.
-This helps developers maintain a clear, uncluttered, and efficient view of the state of Caffe.
+*Please read the [guidelines for contributing](https://github.com/AlexandrParkhomenko/caffe-cuda/blob/master/CONTRIBUTING.md) before submitting this issue!*
 
 ### Issue summary
 
