@@ -50,7 +50,7 @@ include(cmake/Dependencies.cmake)
 
 # ---[ Flags
 if(UNIX OR APPLE)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -Wall")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -Wall -std=c++11")
 endif()
 
 caffe_set_caffe_link()
@@ -84,9 +84,11 @@ if(HAVE_CUDA)
   cuda_include_directories(${Caffe_INCLUDE_DIR} ${Caffe_SRC_DIR} ${Caffe_ALL_INCLUDE_DIRS})
 
   # add definitions to nvcc flags directly
+  if(Caffe_DEFINITIONS)
   set(Caffe_ALL_DEFINITIONS ${Caffe_DEFINITIONS})
   list(REMOVE_ITEM Caffe_ALL_DEFINITIONS PRIVATE PUBLIC)
   list(APPEND CUDA_NVCC_FLAGS ${Caffe_ALL_DEFINITIONS})
+  endif()
 endif()
 
 # ---[ Subdirectories
