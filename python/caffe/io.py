@@ -1,7 +1,9 @@
 import numpy as np
-import skimage.io
+# import skimage.io
 from scipy.ndimage import zoom
-from skimage.transform import resize
+# from skimage.transform import resize
+#import PIL.Image
+import cv2
 
 try:
     # Python3 will most likely not be able to load protobuf
@@ -139,6 +141,8 @@ class Transformer:
         -------
         caffe_in : (K x H x W) ndarray for input to a Net
         """
+        if len(data.shape) == 2:
+            data = np.array([data]) # opencv gray 2 dim, not 3
         self.__check_input(in_)
         caffe_in = data.astype(np.float32, copy=False)
         transpose = self.transpose.get(in_)
@@ -299,13 +303,19 @@ def load_image(filename, color=True):
         of size (H x W x 3) in RGB or
         of size (H x W x 1) in grayscale.
     """
-    img = skimage.img_as_float(skimage.io.imread(filename, as_gray=not color)).astype(np.float32)
-    if img.ndim == 2:
-        img = img[:, :, np.newaxis]
-        if color:
-            img = np.tile(img, (1, 1, 3))
-    elif img.shape[2] == 4:
-        img = img[:, :, :3]
+    #img = skimage.img_as_float(skimage.io.imread(filename, as_gray=not color)).astype(np.float32)
+    #image = PIL.Image.open(filename)
+    #if not color:
+    #	image = image.convert('LA')
+    #img = np.float32(image)
+    col=cv2.IMREAD_GRAYSCALE
+    if color:
+    	col=cv2.IMREAD_COLOR #
+    img = cv2.imread(filename, col)
+    if img is None:
+        raise Exception('Image not found:', filename)
+    if color:
+    	img=cv2.cvtColor(img, cv2.COLOR_BGR2RGB) #
     return img
 
 
@@ -323,25 +333,8 @@ def resize_image(im, new_dims, interp_order=1):
     -------
     im : resized ndarray with shape (new_dims[0], new_dims[1], K)
     """
-    if im.shape[-1] == 1 or im.shape[-1] == 3:
-        im_min, im_max = im.min(), im.max()
-        if im_max > im_min:
-            # skimage is fast but only understands {1,3} channel images
-            # in [0, 1].
-            im_std = (im - im_min) / (im_max - im_min)
-            resized_std = resize(im_std, new_dims, order=interp_order, mode='constant')
-            resized_im = resized_std * (im_max - im_min) + im_min
-        else:
-            # the image is a constant -- avoid divide by 0
-            ret = np.empty((new_dims[0], new_dims[1], im.shape[-1]),
-                           dtype=np.float32)
-            ret.fill(im_min)
-            return ret
-    else:
-        # ndimage interpolates anything but more slowly.
-        scale = tuple(np.array(new_dims, dtype=float) / np.array(im.shape[:2]))
-        resized_im = zoom(im, scale + (1,), order=interp_order)
-    return resized_im.astype(np.float32)
+    
+    return cv2.resize(im, new_dims)
 
 
 def oversample(images, crop_dims):
