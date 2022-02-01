@@ -14,12 +14,7 @@ Paper with code: [Deep Residual Learning for Image Recognition](https://paperswi
 
 ### Introduction
 
-This repository contains the original models (ResNet-50, ResNet-101, and ResNet-152) described in the paper "Deep Residual Learning for Image Recognition" (http://arxiv.org/abs/1512.03385). These models are those used in [ILSVRC] (http://image-net.org/challenges/LSVRC/2015/) and [COCO](http://mscoco.org/dataset/#detections-challenge2015) 2015 competitions, which won the 1st places in: ImageNet classification, ImageNet detection, ImageNet localization, COCO detection, and COCO segmentation.
-
-**Note**
-
-1. Re-implementations with **training code** and models from Facebook AI Research (FAIR): [blog](http://torch.ch/blog/2016/02/04/resnets.html), [code](https://github.com/facebook/fb.resnet.torch)
-2. Code of improved **1K-layer ResNets** with 4.62% test error on CIFAR-10 in our new arXiv paper: https://github.com/KaimingHe/resnet-1k-layers
+This repository contains the original models (ResNet-50, ResNet-101, and ResNet-152) described in the paper "Deep Residual Learning for Image Recognition" (http://arxiv.org/abs/1512.03385). These models are those used in [ILSVRC] (http://image-net.org/challenges/LSVRC/2015/) and [COCO](https://cocodataset.org/#home) 2015 competitions, which won the 1st places in: ImageNet classification, ImageNet detection, ImageNet localization, COCO detection, and COCO segmentation.
 
 ### Citation
 
@@ -76,24 +71,5 @@ If you use these models in your research, please cite:
 	ResNet-101|21.8%|6.1%
 	ResNet-152|21.4%|5.7%
 	
-### Third-party re-implementations
 
-Deep residual networks are very easy to implement and train. We recommend to see also the following third-party re-implementations and extensions:
-
-1. By Facebook AI Research (FAIR), with **training code in Torch and pre-trained ResNet-18/34/50/101 models for ImageNet**: [blog](http://torch.ch/blog/2016/02/04/resnets.html), [code](https://github.com/facebook/fb.resnet.torch)
-1. Torch, CIFAR-10, with ResNet-20 to ResNet-110, training code, and curves: [code](https://github.com/gcr/torch-residual-networks)
-1. Lasagne, CIFAR-10, with ResNet-32 and ResNet-56 and training code: [code](https://github.com/Lasagne/Recipes/tree/master/papers/deep_residual_learning)
-1. Neon, CIFAR-10, with pre-trained ResNet-32 to ResNet-110 models, training code, and curves: [code](https://github.com/apark263/cfmz)
-1. Torch, MNIST, 100 layers: [blog](https://deepmlblog.wordpress.com/2016/01/05/residual-networks-in-torch-mnist/), [code](https://github.com/arunpatala/residual.mnist)
-1. A winning entry in Kaggle's right whale recognition challenge: [blog](http://blog.kaggle.com/2016/02/04/noaa-right-whale-recognition-winners-interview-2nd-place-felix-lau/), [code](https://github.com/felixlaumon/kaggle-right-whale)
-1. Neon, Place2 (mini), 40 layers: [blog](http://www.nervanasys.com/using-neon-for-scene-recognition-mini-places2/), [code](https://github.com/hunterlang/mpmz/)
-1. MatConvNet, CIFAR-10, with ResNet-20 to ResNet-110, training code, and curves: [code](https://github.com/suhangpro/matresnet)
-1. TensorFlow, CIFAR-10, with ResNet-32,110,182 training code and curves:
-[code](https://github.com/ppwwyyxx/tensorpack/tree/master/examples/ResNet)
-1. MatConvNet, reproducing CIFAR-10 and ImageNet experiments (supporting official MatConvNet), training code and curves: [blog](https://zhanghang1989.github.io/ResNet/), [code](https://github.com/zhanghang1989/ResNet-Matconvnet)
-1. Keras, ResNet-50: [code](https://github.com/raghakot/keras-resnet)
-
-Converters:
-
-1. MatConvNet: [url](http://www.vlfeat.org/matconvnet/pretrained/#imagenet-ilsvrc-classification)
-1. TensorFlow: [url](https://github.com/ry/tensorflow-resnet)
+Deep residual networks are very easy to implement and train.
